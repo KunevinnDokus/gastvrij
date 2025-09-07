@@ -12,11 +12,13 @@ build/
 dist/
 
 # Environment variables
-.env
+.env*
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+.env.staging
+.env.production
 
 # Database
 *.db
@@ -88,3 +90,71 @@ temp/
 
 # Prisma
 prisma/migrations/
+
+# Security & Credentials
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+*.cer
+*.der
+*.jks
+*.keystore
+*.pub
+id_rsa*
+id_dsa*
+id_ecdsa*
+id_ed25519*
+
+# API Keys & Tokens
+*api*key*
+*secret*
+*token*
+*credentials*
+*auth*config*
+.credentials
+.secrets
+secrets.json
+config/secrets.json
+auth.json
+
+# Cloud & Services
+.aws/
+.gcp/
+.azure/
+service-account*.json
+*-service-account.json
+google-services.json
+GoogleService-Info.plist
+firebase-adminsdk*.json
+
+# Payment & Financial
+stripe_*
+paypal_*
+payment_*
+*stripe*key*
+*paypal*key*
+
+# Third-party configs with potential secrets
+.npmrc
+.yarnrc
+.dockercfg
+.docker/config.json
+
+# Backup files that might contain secrets
+*.bak
+*.backup
+*.old
+*_backup
+*_old
+
+# Session & Cache files
+.session
+sessions/
+.cache-loader/
+
+# Monitoring & Analytics
+.sentry
+newrelic.ini
+datadog.yaml
