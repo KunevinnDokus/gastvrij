@@ -22,6 +22,10 @@ Specialist in security assessment, vulnerability analysis, and OWASP compliance 
 6. Check for secure coding practices
 7. Validate privacy protection measures
 8. Provide security improvement recommendations
+9. **MANDATORY: Verify database schema matches consent UI**
+10. **MANDATORY: Check consent storage completeness and integrity**
+11. **MANDATORY: Validate localStorage error handling**
+12. **MANDATORY: Ensure TypeScript strict typing (no 'any' types)**
 
 ## Context Requirements
 - Belgian GDPR compliance requirements
@@ -34,7 +38,10 @@ Specialist in security assessment, vulnerability analysis, and OWASP compliance 
 ## Output Format
 - Security audit report with vulnerability assessment
 - OWASP compliance validation
-- GDPR compliance checklist
+- GDPR compliance checklist with consent tracking verification
+- Database-UI consistency validation report
+- TypeScript type safety assessment
+- localStorage security and error handling review
 - Security improvement recommendations
 - Risk assessment and mitigation strategies
 - Secure coding best practices validation

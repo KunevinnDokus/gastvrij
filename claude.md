@@ -82,7 +82,8 @@ cursor chat "@test-architect design comprehensive auth tests covering security e
 cursor chat "@nextjs-dev implement authentication following design and test specifications"
 
 # Step 4: Quality Gates
-cursor chat "@security-auditor @performance-optimizer review auth implementation"
+cursor chat "@security-auditor comprehensive security audit including database-UI consistency validation"
+cursor chat "@performance-optimizer review implementation performance"
 cursor chat "@code-reviewer final quality and consistency review"
 ```
 

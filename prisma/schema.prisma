@@ -20,10 +20,18 @@ model User {
   updatedAt DateTime @updatedAt
 
   // GDPR compliance fields
-  gdprConsent     Boolean   @default(false)
-  gdprConsentDate DateTime?
-  dataRetention   DateTime? // When user data should be deleted
-  isActive        Boolean   @default(true)
+  gdprConsent       Boolean   @default(false)
+  gdprConsentDate   DateTime?
+  gdprConsentVersion String? @default("1.0")
+  dataRetention     DateTime? // When user data should be deleted
+  isActive          Boolean   @default(true)
+  
+  // Granular consent tracking
+  consentNecessary    Boolean   @default(true)
+  consentAnalytics    Boolean   @default(false)
+  consentMarketing    Boolean   @default(false)  
+  consentPreferences  Boolean   @default(false)
+  consentUpdatedAt    DateTime?
 
   // Relations
   accounts Account[]
@@ -31,8 +39,34 @@ model User {
   properties Property[]
   bookings Booking[]
   reviews Review[]
+  consentHistory ConsentHistory[]
 
   @@map("users")
+}
+
+// GDPR Consent Audit Trail
+model ConsentHistory {
+  id        String   @id @default(cuid())
+  userId    String?  // Nullable for anonymous users
+  
+  // Consent details
+  consentNecessary    Boolean
+  consentAnalytics    Boolean
+  consentMarketing    Boolean
+  consentPreferences  Boolean
+  consentVersion      String   @default("1.0")
+  
+  // Audit information
+  action      ConsentAction // GRANTED, WITHDRAWN, UPDATED
+  ipAddress   String?
+  userAgent   String?
+  timestamp   DateTime @default(now())
+  expiresAt   DateTime? // When consent expires
+  
+  // Relations
+  user        User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@map("consent_history")
 }
 
 // NextAuth.js required models
@@ -249,4 +283,11 @@ enum PaymentMethod {
   PAYPAL
   IDEAL
   BANCONTACT
+}
+
+enum ConsentAction {
+  GRANTED
+  WITHDRAWN
+  UPDATED
+  EXPIRED
 }
