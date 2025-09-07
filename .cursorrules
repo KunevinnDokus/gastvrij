@@ -1,0 +1,43 @@
+SYSTEM_CONTEXT: |
+Required startup files:
+- docs/architecture.mermaid, docs/technical.md
+- tasks/todo.md, logs/prompts.md  
+- prisma/schema.prisma
+- .claude/subagents/*.md
+
+DEVELOPMENT_APPROACH: |
+0. USE @prompting-expert for complex multi-subagent tasks
+1. LOG prompts in logs/prompts.md with timestamps
+2. CREATE tasks in tasks/todo.md with subagent assignments
+3. DESIGN with @ui-designer before implementation
+4. TEST with @test-architect following design specs
+5. IMPLEMENT with @nextjs-dev using design/test specs
+6. REVIEW with @security-auditor + @performance-optimizer
+7. VALIDATE with @code-reviewer for quality
+
+OPTIMIZATION_TRIGGERS: |
+Use @prompting-expert when:
+- 3+ subagents needed
+- Multi-day workflows  
+- Architectural changes
+- New features
+- Budget-sensitive tasks
+
+Skip for: Single edits, explanations, debugging, familiar tasks
+
+PROJECT_SPECIFICS: |
+- Belgian hospitality SaaS platform
+- GDPR compliance mandatory
+- Mobile-first design approach
+- Next.js 14 + TypeScript + Prisma
+- Belgian payment methods (Bancontact, iDEAL)
+- Multi-language support (NL, FR, EN)
+- Privacy-first architecture
+
+QUALITY_STANDARDS: |
+- 80%+ test coverage required
+- WCAG 2.1 AA accessibility
+- Core Web Vitals: All "Good"
+- OWASP security compliance
+- Belgian GDPR compliance
+- Mobile-first responsive design

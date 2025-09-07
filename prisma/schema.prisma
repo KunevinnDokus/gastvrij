@@ -1,0 +1,252 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// GDPR Compliant User Management
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  image     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // GDPR compliance fields
+  gdprConsent     Boolean   @default(false)
+  gdprConsentDate DateTime?
+  dataRetention   DateTime? // When user data should be deleted
+  isActive        Boolean   @default(true)
+
+  // Relations
+  accounts Account[]
+  sessions Session[]
+  properties Property[]
+  bookings Booking[]
+  reviews Review[]
+
+  @@map("users")
+}
+
+// NextAuth.js required models
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verificationtokens")
+}
+
+// Hospitality Management Models
+model Property {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  address     String
+  city        String
+  postalCode  String
+  country     String   @default("Belgium")
+  latitude    Float?
+  longitude   Float?
+  
+  // Property details
+  propertyType PropertyType @default(APARTMENT)
+  maxGuests    Int
+  bedrooms     Int
+  bathrooms    Int
+  amenities    String[] // Array of amenities
+  
+  // Pricing
+  basePrice    Decimal @db.Decimal(10, 2)
+  currency     String  @default("EUR")
+  
+  // Status
+  isActive     Boolean @default(true)
+  isVerified   Boolean @default(false)
+  
+  // GDPR compliance
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relations
+  ownerId     String
+  owner       User     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  images      PropertyImage[]
+  bookings    Booking[]
+  reviews     Review[]
+  availability PropertyAvailability[]
+
+  @@map("properties")
+}
+
+model PropertyImage {
+  id         String   @id @default(cuid())
+  url        String
+  alt        String?
+  isPrimary  Boolean  @default(false)
+  order      Int      @default(0)
+  createdAt  DateTime @default(now())
+  
+  propertyId String
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  @@map("property_images")
+}
+
+model PropertyAvailability {
+  id         String   @id @default(cuid())
+  date       DateTime @db.Date
+  isAvailable Boolean  @default(true)
+  price      Decimal? @db.Decimal(10, 2) // Override base price for specific dates
+  
+  propertyId String
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  @@unique([propertyId, date])
+  @@map("property_availability")
+}
+
+model Booking {
+  id          String      @id @default(cuid())
+  checkIn     DateTime    @db.Date
+  checkOut    DateTime    @db.Date
+  guests      Int
+  totalPrice  Decimal     @db.Decimal(10, 2)
+  currency    String      @default("EUR")
+  
+  // Booking status
+  status      BookingStatus @default(PENDING)
+  paymentStatus PaymentStatus @default(PENDING)
+  
+  // Guest information (GDPR compliant)
+  guestName   String
+  guestEmail  String
+  guestPhone  String?
+  specialRequests String?
+  
+  // GDPR compliance
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  dataRetention DateTime? // When booking data should be deleted
+  
+  // Relations
+  propertyId String
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  userId     String?
+  user       User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  payments   Payment[]
+
+  @@map("bookings")
+}
+
+model Payment {
+  id          String        @id @default(cuid())
+  amount      Decimal       @db.Decimal(10, 2)
+  currency    String        @default("EUR")
+  status      PaymentStatus @default(PENDING)
+  method      PaymentMethod
+  transactionId String?
+  
+  // GDPR compliance
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  
+  bookingId   String
+  booking     Booking       @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+  @@map("payments")
+}
+
+model Review {
+  id          String   @id @default(cuid())
+  rating      Int      // 1-5 stars
+  title       String?
+  comment     String?
+  isVerified  Boolean  @default(false)
+  
+  // GDPR compliance
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  dataRetention DateTime? // When review data should be deleted
+  
+  // Relations
+  propertyId  String
+  property    Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([propertyId, userId]) // One review per user per property
+  @@map("reviews")
+}
+
+// Enums
+enum PropertyType {
+  APARTMENT
+  HOUSE
+  STUDIO
+  ROOM
+  VILLA
+  CHALET
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+  NO_SHOW
+}
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  REFUNDED
+  PARTIALLY_REFUNDED
+}
+
+enum PaymentMethod {
+  CARD
+  BANK_TRANSFER
+  PAYPAL
+  IDEAL
+  BANCONTACT
+}
