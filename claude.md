@@ -51,7 +51,7 @@ project-root/
 Six specialized AI assistants orchestrate the development workflow:
 
 - **[Prompting Expert](.claude/subagents/prompting-expert.md)** - Optimize prompts, model selection, cost efficiency
-- **[UI Designer](.claude/subagents/ui-designer.md)** - Design systems, accessibility, responsive interfaces  
+- **[UI Designer](.claude/subagents/ui-designer.md)** - Design systems, accessibility, responsive interfaces, i18n compliance  
 - **[Test Architect](.claude/subagents/test-architect.md)** - Test strategy, comprehensive coverage, quality gates
 - **[Next.js Developer](.claude/subagents/nextjs-dev.md)** - Implementation, Server/Client Components, API routes
 - **[Security Auditor](.claude/subagents/security-auditor.md)** - Vulnerability assessment, OWASP compliance
@@ -64,7 +64,7 @@ Six specialized AI assistants orchestrate the development workflow:
 ```bash
 # Direct execution - no optimization needed
 cursor chat "@nextjs-dev fix the button alignment in LoginForm component"
-cursor chat "@ui-designer update color scheme to match brand guidelines"
+cursor chat "@ui-designer update color scheme to match brand guidelines with i18n text expansion considerations"
 ```
 
 ### Complex Tasks (30% of work)
@@ -73,7 +73,7 @@ cursor chat "@ui-designer update color scheme to match brand guidelines"
 cursor chat "@prompting-expert optimize: 'Build user authentication with JWT, email verification, and proper security'"
 
 # Step 1: Design Foundation
-cursor chat "@ui-designer create authentication flow design system with accessibility compliance"
+cursor chat "@ui-designer create authentication flow design system with accessibility and i18n compliance"
 
 # Step 2: Test Strategy  
 cursor chat "@test-architect design comprehensive auth tests covering security edge cases"
@@ -92,19 +92,19 @@ cursor chat "@code-reviewer final quality and consistency review"
 ### Design & Planning
 ```bash
 # UI/UX Foundation
-cursor chat "@ui-designer create responsive dashboard layout with mobile-first approach"
-cursor chat "@ui-designer design component library with WCAG 2.1 AA compliance"
+cursor chat "@ui-designer create responsive dashboard layout with mobile-first approach and i18n text expansion"
+cursor chat "@ui-designer design component library with WCAG 2.1 AA compliance and multilingual support"
 
 # Test Strategy
-cursor chat "@test-architect design test suite for [feature] with 80%+ coverage"
-cursor chat "@test-architect create integration tests for API endpoints with edge cases"
+cursor chat "@test-architect design test suite for [feature] with 80%+ coverage including i18n edge cases"
+cursor chat "@test-architect create integration tests for API endpoints with multilingual data validation"
 ```
 
 ### Implementation
 ```bash
 # Feature Development
-cursor chat "@nextjs-dev implement [feature] with Server Components and proper error handling"
-cursor chat "@nextjs-dev create API route for [endpoint] with Zod validation and Prisma"
+cursor chat "@nextjs-dev implement [feature] with Server Components, proper error handling, and i18n integration"
+cursor chat "@nextjs-dev create API route for [endpoint] with Zod validation, Prisma, and multilingual response support"
 
 # Database Operations
 cursor chat "@nextjs-dev setup Prisma schema for [data model] with migrations"
@@ -119,7 +119,7 @@ cursor chat "@security-auditor audit [component] for OWASP compliance and input 
 cursor chat "@performance-optimizer analyze [feature] for Core Web Vitals and bundle size"
 
 # Code Quality
-cursor chat "@code-reviewer review [implementation] for patterns and maintainability"
+cursor chat "@code-reviewer review [implementation] for patterns, maintainability, and i18n completeness"
 ```
 
 ### Meta-Optimization
@@ -170,6 +170,15 @@ cursor chat "@prompting-expert design parallel subagent workflow for [multi-phas
 - Environment variable scoping
 - CSRF protection on forms
 
+### Internationalization (i18n) Requirements
+- **Language Support**: Dutch (nl), French (fr), German (de), English (en)
+- **Translation Keys**: All user-facing text must use next-intl translation keys
+- **Text Expansion**: UI layouts must accommodate 30% text expansion for German
+- **Cultural Adaptation**: Date formats, number formats, and cultural conventions per locale
+- **Testing**: All features tested across all supported languages
+- **Fallback Strategy**: Graceful fallback to English for missing translations
+- **Dynamic Content**: Server-generated content must be locale-aware
+
 ## Configuration Files
 
 ### .cursorrules (Essential Context)
@@ -180,16 +189,17 @@ Required startup files:
 - tasks/todo.md, logs/prompts.md  
 - prisma/schema.prisma
 - .claude/subagents/*.md
+- messages/*.json (translation files)
 
 DEVELOPMENT_APPROACH: |
 0. USE @prompting-expert for complex multi-subagent tasks
 1. LOG prompts in logs/prompts.md with timestamps
 2. CREATE tasks in tasks/todo.md with subagent assignments
-3. DESIGN with @ui-designer before implementation
-4. TEST with @test-architect following design specs
-5. IMPLEMENT with @nextjs-dev using design/test specs
+3. DESIGN with @ui-designer (including i18n compliance) before implementation
+4. TEST with @test-architect (including multilingual edge cases) following design specs
+5. IMPLEMENT with @nextjs-dev (with i18n integration) using design/test specs
 6. REVIEW with @security-auditor + @performance-optimizer
-7. VALIDATE with @code-reviewer for quality
+7. VALIDATE with @code-reviewer for quality and i18n completeness
 
 OPTIMIZATION_TRIGGERS: |
 Use @prompting-expert when:

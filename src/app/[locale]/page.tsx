@@ -1,26 +1,42 @@
 import Link from 'next/link';
+import { getTranslations } from 'next-intl/server';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
-export default function HomePage() {
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export default async function HomePage({ params }: Props) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'homepage' });
+  
   return (
     <main className="min-h-screen bg-gradient-to-br from-hospitality-50 to-hospitality-100">
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-16">
         <div className="text-center max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-            Welkom bij{' '}
-            <span className="text-hospitality-600">Gastvrij.eu</span>
+            {t('hero.title').split('<span>').map((part, index) => {
+              if (index === 0) return part;
+              const [highlighted, rest] = part.split('</span>');
+              return (
+                <span key={index}>
+                  <span className="text-hospitality-600">{highlighted}</span>
+                  {rest}
+                </span>
+              );
+            })}
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 mb-8">
-            Het premium platform voor Belgische hospitality management met volledige GDPR-compliance
+            {t('hero.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" className="hospitality-button">
-              <Link href="/properties">Ontdek Eigenschappen</Link>
+              <Link href="/properties">{t('hero.cta.properties')}</Link>
             </Button>
             <Button asChild variant="outline" size="lg">
-              <Link href="/host">Word Host</Link>
+              <Link href="/host">{t('hero.cta.host')}</Link>
             </Button>
           </div>
         </div>
@@ -30,10 +46,10 @@ export default function HomePage() {
       <section className="container mx-auto px-4 py-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Waarom Gastvrij.eu?
+            {t('features.title')}
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Speciaal ontworpen voor de Belgische markt met aandacht voor privacy en compliance
+            {t('features.subtitle')}
           </p>
         </div>
 
@@ -44,12 +60,12 @@ export default function HomePage() {
                 <div className="w-8 h-8 bg-hospitality-100 rounded-full flex items-center justify-center">
                   <span className="text-hospitality-600 font-bold">🔒</span>
                 </div>
-                GDPR Compliant
+                {t('features.gdpr.title')}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <CardDescription>
-                Volledige naleving van Belgische en Europese privacywetgeving. Uw gastgegevens zijn veilig.
+                {t('features.gdpr.description')}
               </CardDescription>
             </CardContent>
           </Card>
@@ -60,12 +76,12 @@ export default function HomePage() {
                 <div className="w-8 h-8 bg-hospitality-100 rounded-full flex items-center justify-center">
                   <span className="text-hospitality-600 font-bold">📱</span>
                 </div>
-                Mobile-First
+                {t('features.mobile.title')}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <CardDescription>
-                Geoptimaliseerd voor mobiele apparaten. Beheer uw eigenschappen overal, altijd.
+                {t('features.mobile.description')}
               </CardDescription>
             </CardContent>
           </Card>
@@ -76,12 +92,12 @@ export default function HomePage() {
                 <div className="w-8 h-8 bg-hospitality-100 rounded-full flex items-center justify-center">
                   <span className="text-hospitality-600 font-bold">🇧🇪</span>
                 </div>
-                Belgisch Vriendelijk
+                {t('features.belgian.title')}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <CardDescription>
-                Ondersteuning voor Nederlandse en Franse talen. Lokale betalingsmethoden en valuta.
+                {t('features.belgian.description')}
               </CardDescription>
             </CardContent>
           </Card>
@@ -92,12 +108,12 @@ export default function HomePage() {
                 <div className="w-8 h-8 bg-hospitality-100 rounded-full flex items-center justify-center">
                   <span className="text-hospitality-600 font-bold">⚡</span>
                 </div>
-                Snelle Performance
+                {t('features.performance.title')}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <CardDescription>
-                Next.js 14 met Server Components voor optimale snelheid en gebruikerservaring.
+                {t('features.performance.description')}
               </CardDescription>
             </CardContent>
           </Card>
@@ -108,12 +124,12 @@ export default function HomePage() {
                 <div className="w-8 h-8 bg-hospitality-100 rounded-full flex items-center justify-center">
                   <span className="text-hospitality-600 font-bold">💳</span>
                 </div>
-                Lokale Betalingen
+                {t('features.payments.title')}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <CardDescription>
-                Ondersteuning voor Bancontact, iDEAL en andere Belgische betalingsmethoden.
+                {t('features.payments.description')}
               </CardDescription>
             </CardContent>
           </Card>
@@ -124,12 +140,12 @@ export default function HomePage() {
                 <div className="w-8 h-8 bg-hospitality-100 rounded-full flex items-center justify-center">
                   <span className="text-hospitality-600 font-bold">📊</span>
                 </div>
-                Analytics & Insights
+                {t('features.analytics.title')}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <CardDescription>
-                GDPR-compliant analytics om uw hospitality business te optimaliseren.
+                {t('features.analytics.description')}
               </CardDescription>
             </CardContent>
           </Card>
@@ -140,17 +156,17 @@ export default function HomePage() {
       <section className="container mx-auto px-4 py-16">
         <div className="bg-hospitality-600 rounded-2xl p-8 md:p-12 text-center text-white">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Klaar om te beginnen?
+            {t('cta.title')}
           </h2>
           <p className="text-xl mb-8 opacity-90">
-            Sluit u aan bij de groeiende gemeenschap van Belgische hospitality professionals
+            {t('cta.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" variant="secondary">
-              <Link href="/register">Gratis Account Aanmaken</Link>
+              <Link href="/register">{t('cta.register')}</Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-hospitality-600">
-              <Link href="/contact">Contact Opnemen</Link>
+              <Link href="/contact">{t('cta.contact')}</Link>
             </Button>
           </div>
         </div>

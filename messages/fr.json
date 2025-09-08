@@ -1,0 +1,121 @@
+{
+  "common": {
+    "language": {
+      "nederlands": "Nederlands",
+      "francais": "Français",
+      "deutsch": "Deutsch", 
+      "english": "English",
+      "current": "Langue actuelle",
+      "switchTo": "Passer à {language}"
+    }
+  },
+  "homepage": {
+    "hero": {
+      "title": "Bienvenue chez <span>Gastvrij.eu</span>",
+      "subtitle": "La plateforme premium pour la gestion hôtelière belge avec une conformité GDPR complète",
+      "cta": {
+        "properties": "Découvrir les Propriétés",
+        "host": "Devenir Hôte"
+      }
+    },
+    "features": {
+      "title": "Pourquoi Gastvrij.eu ?",
+      "subtitle": "Spécialement conçu pour le marché belge avec une attention à la vie privée et à la conformité",
+      "gdpr": {
+        "title": "Conforme GDPR",
+        "description": "Respect total de la législation belge et européenne sur la vie privée. Vos données clients sont sécurisées."
+      },
+      "mobile": {
+        "title": "Mobile-First",
+        "description": "Optimisé pour les appareils mobiles. Gérez vos propriétés partout, à tout moment."
+      },
+      "belgian": {
+        "title": "Belge Convivial",
+        "description": "Support pour les langues néerlandaise et française. Méthodes de paiement et devises locales."
+      },
+      "performance": {
+        "title": "Performance Rapide",
+        "description": "Next.js 14 avec Server Components pour une vitesse et une expérience utilisateur optimales."
+      },
+      "payments": {
+        "title": "Paiements Locaux",
+        "description": "Support pour Bancontact, iDEAL et autres méthodes de paiement belges."
+      },
+      "analytics": {
+        "title": "Analytics & Insights",
+        "description": "Analytics conformes GDPR pour optimiser votre activité hôtelière."
+      }
+    },
+    "cta": {
+      "title": "Prêt à commencer ?",
+      "subtitle": "Rejoignez la communauté grandissante des professionnels de l'hôtellerie belge",
+      "register": "Créer un Compte Gratuit",
+      "contact": "Prendre Contact"
+    }
+  },
+  "nav": {
+    "skipToMain": "Aller au contenu principal"
+  },
+  "cookies": {
+    "title": "Nous améliorons votre expérience",
+    "compactMessages": {
+      "allEnabled": "Toutes les fonctionnalités activées pour la meilleure expérience",
+      "onlyEssential": "Seulement les fonctions essentielles - vous pouvez en activer plus",
+      "someEnabled": "{accepted}/{total} fonctionnalités activées pour votre confort"
+    },
+    "actions": {
+      "accept": "Accepter",
+      "reject": "Refuser",
+      "customize": "Personnaliser",
+      "saveSettings": "Sauvegarder les Paramètres",
+      "acceptAll": "Tout Accepter",
+      "onlyEssential": "Seulement l'Essentiel",
+      "showSettings": "Afficher les paramètres",
+      "hideSettings": "Masquer les paramètres"
+    },
+    "categories": {
+      "necessary": {
+        "title": "Cookies Essentiels",
+        "shortTitle": "Essentiel",
+        "description": "Assurent une expérience d'accueil sûre et stable",
+        "benefit": "Réservations sécurisées et accès au compte"
+      },
+      "analytics": {
+        "title": "Cookies d'Amélioration",
+        "shortTitle": "Amélioration",
+        "description": "Nous aident à optimiser votre expérience de séjour",
+        "benefit": "Meilleures recommandations pour votre prochain séjour"
+      },
+      "marketing": {
+        "title": "Cookies Personnalisés",
+        "shortTitle": "Personnalisé",
+        "description": "Affichent des hébergements pertinents et offres spéciales",
+        "benefit": "Offres personnalisées pour votre destination de rêve"
+      },
+      "preferences": {
+        "title": "Cookies de Confort",
+        "shortTitle": "Confort",
+        "description": "Mémorisent vos préférences pour une expérience fluide",
+        "benefit": "Vos favoris et paramètres toujours à portée de main"
+      }
+    },
+    "aria": {
+      "acceptAllLabel": "Accepter tous les cookies pour la meilleure expérience",
+      "rejectAllLabel": "Accepter seulement les cookies essentiels",
+      "toggleLabel": "{action} {category}",
+      "enable": "activer",
+      "disable": "désactiver"
+    },
+    "legal": {
+      "privacy": "Politique de Confidentialité",
+      "cookies": "Politique des Cookies",
+      "footer": "Gastvrij.eu • Votre vie privée, notre priorité • Compatible GDPR"
+    },
+    "feedback": {
+      "allAccepted": "Tous les cookies acceptés - merci pour votre confiance !",
+      "privacyRespected": "Vos préférences de confidentialité sont respectées",
+      "customSaved": "Vos {count}/{total} préférences de cookies sont sauvegardées",
+      "categoryToggled": "{category} {action}"
+    }
+  }
+}

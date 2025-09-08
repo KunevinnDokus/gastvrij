@@ -31,6 +31,7 @@ import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
 import { CONSENT_VERSION } from '@/lib/gdpr';
 import { ChevronUp, ChevronDown, Shield, BarChart3, Target, User, Cookie, Eye, Heart } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 // UX-Optimized TypeScript interfaces
 interface ConsentState {
@@ -82,45 +83,13 @@ const BANNER_HEIGHT_MOBILE = 80; // px max
 const BANNER_HEIGHT_DESKTOP = 60; // px max
 const TOUCH_TARGET_SIZE = 44; // px minimum
 
-// Cookie categories with hospitality-focused, value-driven messaging
-const cookieCategories: CookieCategory[] = [
-  {
-    id: 'necessary',
-    title: 'Essentiële Cookies',
-    shortTitle: 'Essentieel',
-    description: 'Zorgen voor een veilige en stabiele gastervaring',
-    icon: Shield,
-    required: true,
-    benefit: 'Veilige reserveringen en account toegang',
-  },
-  {
-    id: 'analytics',
-    title: 'Verbeter Cookies', 
-    shortTitle: 'Verbetering',
-    description: 'Helpen ons uw verblijfervaring te optimaliseren',
-    icon: BarChart3,
-    required: false,
-    benefit: 'Betere aanbevelingen voor uw volgende verblijf',
-  },
-  {
-    id: 'marketing',
-    title: 'Persoonlijke Cookies',
-    shortTitle: 'Persoonlijk', 
-    description: 'Tonen relevante accommodaties en speciale aanbiedingen',
-    icon: Target,
-    required: false,
-    benefit: 'Gepersonaliseerde deals voor uw droombestemming',
-  },
-  {
-    id: 'preferences',
-    title: 'Gemak Cookies',
-    shortTitle: 'Gemak',
-    description: 'Onthouden uw voorkeuren voor een vlotte ervaring',
-    icon: User,
-    required: false,
-    benefit: 'Uw favorieten en instellingen altijd bij de hand',
-  },
-];
+// Cookie category icons mapping
+const categoryIcons = {
+  necessary: Shield,
+  analytics: BarChart3,
+  marketing: Target,
+  preferences: User,
+} as const;
 
 export function CookieConsent({
   className = '',
@@ -129,6 +98,49 @@ export function CookieConsent({
   performanceMode = false,
   variant = 'hospitality',
 }: CookieConsentProps) {
+  // Internationalization
+  const t = useTranslations('cookies');
+  
+  // Create dynamic cookie categories with translations
+  const cookieCategories: CookieCategory[] = useMemo(() => [
+    {
+      id: 'necessary',
+      title: t('categories.necessary.title'),
+      shortTitle: t('categories.necessary.shortTitle'),
+      description: t('categories.necessary.description'),
+      icon: categoryIcons.necessary,
+      required: true,
+      benefit: t('categories.necessary.benefit'),
+    },
+    {
+      id: 'analytics',
+      title: t('categories.analytics.title'),
+      shortTitle: t('categories.analytics.shortTitle'),
+      description: t('categories.analytics.description'),
+      icon: categoryIcons.analytics,
+      required: false,
+      benefit: t('categories.analytics.benefit'),
+    },
+    {
+      id: 'marketing',
+      title: t('categories.marketing.title'),
+      shortTitle: t('categories.marketing.shortTitle'),
+      description: t('categories.marketing.description'),
+      icon: categoryIcons.marketing,
+      required: false,
+      benefit: t('categories.marketing.benefit'),
+    },
+    {
+      id: 'preferences',
+      title: t('categories.preferences.title'),
+      shortTitle: t('categories.preferences.shortTitle'),
+      description: t('categories.preferences.description'),
+      icon: categoryIcons.preferences,
+      required: false,
+      benefit: t('categories.preferences.benefit'),
+    },
+  ], [t]);
+
   // UX-optimized state management
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
@@ -354,11 +366,11 @@ export function CookieConsent({
       // Show brief positive feedback
       if (!performanceMode) {
         setTimeout(() => {
-          console.log('🍪 Alle cookies geaccepteerd - bedankt voor uw vertrouwen!');
+          console.log('🍪 ' + t('feedback.allAccepted'));
         }, 100);
       }
     }
-  }, [saveConsent, performanceMode]);
+  }, [saveConsent, performanceMode, t]);
   
   // Handle consent rejection - equal treatment, no dark patterns
   const handleReject = useCallback(() => {
@@ -375,11 +387,11 @@ export function CookieConsent({
       // Respectful acknowledgment
       if (!performanceMode) {
         setTimeout(() => {
-          console.log('✅ Uw privacy voorkeuren zijn gerespecteerd');
+          console.log('✅ ' + t('feedback.privacyRespected'));
         }, 100);
       }
     }
-  }, [saveConsent, performanceMode]);
+  }, [saveConsent, performanceMode, t]);
   
   // Handle custom settings save
   const handleSaveSettings = useCallback(() => {
@@ -390,11 +402,11 @@ export function CookieConsent({
       if (!performanceMode) {
         setTimeout(() => {
           const enabledCount = Object.values(consent).filter(Boolean).length;
-          console.log(`🎯 Uw ${enabledCount}/${cookieCategories.length} cookie voorkeuren zijn opgeslagen`);
+          console.log('🎯 ' + t('feedback.customSaved', { count: enabledCount, total: cookieCategories.length }));
         }, 100);
       }
     }
-  }, [consent, saveConsent, performanceMode]);
+  }, [consent, saveConsent, performanceMode, t, cookieCategories]);
   
   // Handle progressive disclosure toggle
   const handleToggleExpanded = useCallback(() => {
@@ -426,13 +438,13 @@ export function CookieConsent({
       // Immediate visual feedback for better UX
       if (!performanceMode) {
         const category = cookieCategories.find(cat => cat.id === categoryId);
-        const action = newConsent[categoryId] ? 'ingeschakeld' : 'uitgeschakeld';
-        console.log(`🔄 ${category?.title} ${action}`);
+        const action = newConsent[categoryId] ? t('aria.enable') : t('aria.disable');
+        console.log('🔄 ' + t('feedback.categoryToggled', { category: category?.title || '', action }));
       }
       
       return newConsent;
     });
-  }, [performanceMode]);
+  }, [performanceMode, t, cookieCategories]);
 
   // Handle banner dismissal with user-friendly approach
   const handleDismiss = useCallback(() => {
@@ -482,13 +494,13 @@ export function CookieConsent({
   
   const compactMessage = useMemo(() => {
     if (acceptedCount === totalCount) {
-      return 'Alle functies ingeschakeld voor de beste ervaring';
+      return t('compactMessages.allEnabled');
     } else if (acceptedCount === 1) {
-      return 'Alleen essentiële functies - u kunt meer inschakelen';
+      return t('compactMessages.onlyEssential');
     } else {
-      return `${acceptedCount}/${totalCount} functies ingeschakeld voor uw gemak`;
+      return t('compactMessages.someEnabled', { accepted: acceptedCount, total: totalCount });
     }
-  }, [acceptedCount, totalCount]);
+  }, [acceptedCount, totalCount, t]);
 
   // Don't render if not visible
   if (!isVisible) return null;
@@ -536,7 +548,7 @@ export function CookieConsent({
                     id="cookie-consent-title" 
                     className="text-sm font-medium text-gray-900"
                   >
-                    We maken uw ervaring beter
+                    {t('title')}
                   </h3>
                 </div>
                 <p 
@@ -555,18 +567,18 @@ export function CookieConsent({
                   variant="outline"
                   size="sm"
                   className={`min-h-[${TOUCH_TARGET_SIZE}px] px-4 text-xs font-medium border-gray-300 text-gray-700 hover:bg-gray-50 hover:text-gray-900 focus:ring-2 focus:ring-hospitality-500 focus:ring-offset-2 transition-colors`}
-                  aria-label="Alleen essentiële cookies accepteren"
+                  aria-label={t('aria.rejectAllLabel')}
                 >
-                  Weigeren
+                  {t('actions.reject')}
                 </Button>
                 
                 <Button
                   onClick={handleAccept}
                   size="sm"
                   className={`min-h-[${TOUCH_TARGET_SIZE}px] px-4 text-xs font-medium bg-hospitality-600 hover:bg-hospitality-700 text-white focus:ring-2 focus:ring-hospitality-500 focus:ring-offset-2 transition-colors`}
-                  aria-label="Alle cookies accepteren voor de beste ervaring"
+                  aria-label={t('aria.acceptAllLabel')}
                 >
-                  Accepteren
+                  {t('actions.accept')}
                 </Button>
                 
                 <Button
@@ -575,14 +587,14 @@ export function CookieConsent({
                   size="sm"
                   className={`min-h-[${TOUCH_TARGET_SIZE}px] px-3 border-gray-300 text-gray-700 hover:bg-gray-50 focus:ring-2 focus:ring-hospitality-500 focus:ring-offset-2 transition-colors`}
                   aria-expanded={isExpanded}
-                  aria-label={isExpanded ? 'Instellingen verbergen' : 'Instellingen tonen'}
+                  aria-label={isExpanded ? t('actions.hideSettings') : t('actions.showSettings')}
                 >
                   {isExpanded ? (
                     <ChevronDown className="h-4 w-4" />
                   ) : (
                     <ChevronUp className="h-4 w-4" />
                   )}
-                  <span className="ml-1 text-xs hidden sm:inline">Aanpassen</span>
+                  <span className="ml-1 text-xs hidden sm:inline">{t('actions.customize')}</span>
                 </Button>
               </div>
             </div>
@@ -653,7 +665,10 @@ export function CookieConsent({
                                 }`} />
                               </div>
                               <span className="sr-only">
-                                {category.title} {isEnabled ? 'uitschakelen' : 'inschakelen'}
+                                {t('aria.toggleLabel', { 
+                                  category: category.title, 
+                                  action: isEnabled ? t('aria.disable') : t('aria.enable') 
+                                })}
                               </span>
                             </label>
                           </div>
@@ -687,7 +702,7 @@ export function CookieConsent({
                       className="flex-1 sm:flex-none bg-hospitality-600 hover:bg-hospitality-700 text-white font-medium px-8 focus:ring-2 focus:ring-hospitality-500 focus:ring-offset-2"
                     >
                       <Cookie className="h-4 w-4 mr-2" />
-                      Instellingen Opslaan
+                      {t('actions.saveSettings')}
                     </Button>
                     
                     <div className="flex gap-3">
@@ -696,7 +711,7 @@ export function CookieConsent({
                         variant="outline"
                         className="flex-1 sm:flex-none border-gray-300 text-gray-700 hover:bg-gray-50 font-medium px-6 focus:ring-2 focus:ring-hospitality-500 focus:ring-offset-2"
                       >
-                        Alleen Essentieel
+                        {t('actions.onlyEssential')}
                       </Button>
                       
                       <Button
@@ -704,7 +719,7 @@ export function CookieConsent({
                         className="flex-1 sm:flex-none bg-hospitality-600 hover:bg-hospitality-700 text-white font-medium px-6 focus:ring-2 focus:ring-hospitality-500 focus:ring-offset-2"
                       >
                         <Heart className="h-4 w-4 mr-2" />
-                        Alles Accepteren
+                        {t('actions.acceptAll')}
                       </Button>
                     </div>
                   </div>
@@ -719,7 +734,7 @@ export function CookieConsent({
                         rel="noopener noreferrer"
                       >
                         <Eye className="h-3 w-3 inline mr-1" />
-                        Privacybeleid
+                        {t('legal.privacy')}
                       </a>
                       <a 
                         href="/cookies" 
@@ -728,11 +743,11 @@ export function CookieConsent({
                         rel="noopener noreferrer"
                       >
                         <Cookie className="h-3 w-3 inline mr-1" />
-                        Cookiebeleid
+                        {t('legal.cookies')}
                       </a>
                     </div>
                     <p className="text-xs text-gray-500">
-                      Gastvrij.eu • Uw privacy, onze prioriteit • GDPR-compatibel
+                      {t('legal.footer')}
                     </p>
                   </div>
                 </div>
