@@ -6,7 +6,7 @@ const withNextIntl = require('next-intl/plugin')(
 const nextConfig = {
   serverExternalPackages: ['@prisma/client'],
   images: {
-    domains: ['localhost'],
+    domains: ['localhost', 'images.unsplash.com'],
     formats: ['image/webp', 'image/avif'],
   },
   // Belgian GDPR compliance

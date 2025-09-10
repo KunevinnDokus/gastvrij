@@ -11,46 +11,87 @@
   },
   "homepage": {
     "hero": {
-      "title": "Bienvenue chez <span>Gastvrij.eu</span>",
-      "subtitle": "La plateforme premium pour la gestion hôtelière belge avec une conformité GDPR complète",
-      "cta": {
-        "properties": "Découvrir les Propriétés",
-        "host": "Devenir Hôte"
+      "title": "Gastvrij.eu",
+      "tagline": "\"Enfin du temps pour mes hôtes à nouveau\"",
+      "description": "Vous reconnaissez cela ? Vous avez commencé votre chambre d'hôtes ou location de vacances plein de passion, mais maintenant vous vous noyez dans l'administration, les réservations et la réglementation. <strong>Nous comprenons ce sentiment.</strong> C'est pourquoi nous avons créé un logiciel qui vous redonne ce temps avec vos hôtes.",
+      "cta": "Inscrivez-vous et commencez"
+    },
+    "problems": {
+      "title": "Vous reconnaissez cela ?",
+      "administrative": {
+        "title": "\"Je me noie dans l'administration\"",
+        "description": "<strong>Quotidiennement 2-3 heures perdues</strong> sur les factures, déclarations TVA, confirmations de réservation et taxe de séjour. Vous vouliez offrir l'hospitalité, pas être comptable.",
+        "alt": "Bureau à domicile avec pile de papiers et tasse de café"
+      },
+      "time": {
+        "title": "\"Plus de temps pour mes hôtes\"",
+        "description": "Ces <strong>belles conversations sur les conseils locaux</strong> ? Oubliez ça. Entre le nettoyage, l'enregistrement et la mise à jour d'Excel, vous avez à peine le temps pour un salut amical.",
+        "alt": "Hôtesse accueillant les clients dans une entrée chaleureuse"
+      },
+      "software": {
+        "title": "\"Logiciel pour hôtels, pas pour moi\"",
+        "description": "<strong>200€+ par mois</strong> pour un logiciel plein de fonctions dont vous n'avez pas besoin. Fait pour Hilton, pas pour votre B&B douillet de 3 chambres.",
+        "alt": "Frustré derrière un ordinateur portable avec trop de fenêtres ouvertes"
       }
     },
-    "features": {
-      "title": "Pourquoi Gastvrij.eu ?",
-      "subtitle": "Spécialement conçu pour le marché belge avec une attention à la vie privée et à la conformité",
-      "gdpr": {
-        "title": "Conforme GDPR",
-        "description": "Respect total de la législation belge et européenne sur la vie privée. Vos données clients sont sécurisées."
+    "solution": {
+      "title": "Et si cela devient votre réalité quotidienne ?",
+      "before": {
+        "title": "Avant : Chaos",
+        "description": "3 heures d'administration par jour",
+        "alt": "Stress et papiers sur la table de cuisine"
       },
-      "mobile": {
-        "title": "Mobile-First",
-        "description": "Optimisé pour les appareils mobiles. Gérez vos propriétés partout, à tout moment."
+      "after": {
+        "title": "Avec Gastvrij.eu : Paix",
+        "description": "30 minutes, le reste c'est du temps pour les hôtes",
+        "alt": "Table de petit-déjeuner confortable avec hôtesse et clients"
       },
-      "belgian": {
-        "title": "Belge Convivial",
-        "description": "Support pour les langues néerlandaise et française. Méthodes de paiement et devises locales."
+      "benefits": {
+        "title": "Voici ce que vous récupérez :",
+        "time": "<strong>2,5 heures par jour</strong> - Pour ces belles conversations avec les hôtes",
+        "weekend": "<strong>Repos du week-end</strong> - Confirmations de réservation automatiques",
+        "tax": "<strong>Pas de stress TVA</strong> - Rapports prêts en 1 clic",
+        "history": "<strong>Historique personnel des hôtes</strong> - \"Bienvenue Mme Dupont !\"",
+        "savings": "<strong>150€ d'économie par mois</strong> - Versus gros logiciel hôtelier",
+        "mobile": "<strong>Mobile partout</strong> - Confirmer l'arrivée depuis le jardin"
       },
-      "performance": {
-        "title": "Performance Rapide",
-        "description": "Next.js 14 avec Server Components pour une vitesse et une expérience utilisateur optimales."
-      },
-      "payments": {
-        "title": "Paiements Locaux",
-        "description": "Support pour Bancontact, iDEAL et autres méthodes de paiement belges."
-      },
-      "analytics": {
-        "title": "Analytics & Insights",
-        "description": "Analytics conformes GDPR pour optimiser votre activité hôtelière."
+      "testimonial": {
+        "quote": "Depuis Gastvrij.eu je peux refaire ce pour quoi je suis entré dans ce secteur : <strong>être une hôtesse</strong> au lieu d'une assistante administrative.",
+        "author": "- Marie, B&B De Lindenhof, Bruges"
+      }
+    },
+    "target": {
+      "title": "Spécialement conçu pour vous",
+      "description": "<strong>Gastvrij.eu</strong> est conçu pour les exploitants d'hébergements familiaux en Flandre (1-8 chambres) pour qui <strong>l'hospitalité est la motivation principale</strong>. Vous voyez l'hébergement non seulement comme une entreprise, mais comme un moyen de donner aux gens un sentiment de chez-soi et de créer des moments inoubliables.",
+      "traits": {
+        "personal": {
+          "title": "Implication Personnelle",
+          "description": "Présent quotidiennement, effectue personnellement les activités principales, chaque hôte est personnellement accueilli et raccompagné."
+        },
+        "local": {
+          "title": "Ambassadeur Local",
+          "description": "Fier de sa connaissance régionale, partage conseils restaurants et histoires de la région avec passion et expertise."
+        },
+        "quality": {
+          "title": "Qualité avant Quantité",
+          "description": "Choisit consciemment la petite échelle pour garantir attention personnelle et expérience hôte authentique."
+        },
+        "outsourcing": {
+          "title": "Externalisation Intelligente",
+          "description": "Externalise stratégiquement les tâches (blanchisserie, jardin, ménage) pour libérer plus de temps pour le contact hôte."
+        }
       }
     },
     "cta": {
-      "title": "Prêt à commencer ?",
-      "subtitle": "Rejoignez la communauté grandissante des professionnels de l'hôtellerie belge",
-      "register": "Créer un Compte Gratuit",
-      "contact": "Prendre Contact"
+      "title": "Retrouvez votre passion pour l'hospitalité",
+      "description": "<strong>Essayez gratuitement pendant 14 jours.</strong> Pas de coûts d'installation, pas d'obligations. Juste essayer le logiciel qui vous redonne 2,5 heures par jour pour vos hôtes.",
+      "benefits": {
+        "trial": "14 jours gratuits",
+        "setup": "Pas de coûts d'installation",
+        "cancel": "Annulez quand vous voulez"
+      },
+      "button": "Commencez votre essai gratuit",
+      "alt": "Maison flamande traditionnelle avec exploitants hospitaliers"
     }
   },
   "nav": {

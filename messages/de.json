@@ -11,46 +11,87 @@
   },
   "homepage": {
     "hero": {
-      "title": "Willkommen bei <span>Gastvrij.eu</span>",
-      "subtitle": "Die Premium-Plattform für belgisches Hospitality-Management mit vollständiger DSGVO-Konformität",
-      "cta": {
-        "properties": "Eigenschaften Entdecken",
-        "host": "Host Werden"
+      "title": "Gastvrij.eu",
+      "tagline": "\"Endlich wieder Zeit für meine Gäste\"",
+      "description": "Erkennen Sie das wieder? Sie haben Ihr B&B oder Ferienhaus voller Leidenschaft begonnen, aber jetzt ertrinken Sie in Verwaltung, Buchungen und Vorschriften. <strong>Wir verstehen dieses Gefühl.</strong> Deshalb haben wir Software entwickelt, die Ihnen diese Zeit mit Ihren Gästen zurückgibt.",
+      "cta": "Registrieren und loslegen"
+    },
+    "problems": {
+      "title": "Erkennen Sie das wieder?",
+      "administrative": {
+        "title": "\"Ich ertrinke in der Verwaltung\"",
+        "description": "<strong>Täglich 2-3 Stunden verloren</strong> für Rechnungen, Umsatzsteuererklärungen, Buchungsbestätigungen und Tourismussteuer. Sie wollten Gastfreundschaft bieten, nicht Buchhalter sein.",
+        "alt": "Heimarbeitsplatz mit Papierstapel und Kaffeetasse"
+      },
+      "time": {
+        "title": "\"Keine Zeit mehr für meine Gäste\"",
+        "description": "Diese <strong>netten Gespräche über lokale Tipps</strong>? Vergessen Sie's. Zwischen Putzen, Einchecken und Excel-Updates haben Sie kaum Zeit für einen freundlichen Gruß.",
+        "alt": "Gastgeberin empfängt Gäste in gemütlichem Eingangsbereich"
+      },
+      "software": {
+        "title": "\"Software für Hotels, nicht für mich\"",
+        "description": "<strong>200€+ pro Monat</strong> für Software voller Funktionen, die Sie nicht brauchen. Gemacht für Hilton, nicht für Ihr gemütliches B&B mit 3 Zimmern.",
+        "alt": "Frustriert am Laptop mit zu vielen offenen Fenstern"
       }
     },
-    "features": {
-      "title": "Warum Gastvrij.eu?",
-      "subtitle": "Speziell für den belgischen Markt entwickelt mit Fokus auf Datenschutz und Compliance",
-      "gdpr": {
-        "title": "DSGVO-konform",
-        "description": "Vollständige Einhaltung der belgischen und europäischen Datenschutzgesetze. Ihre Gästdaten sind sicher."
+    "solution": {
+      "title": "Was wäre, wenn das Ihre tägliche Realität wird?",
+      "before": {
+        "title": "Vorher: Chaos",
+        "description": "3 Stunden Verwaltung pro Tag",
+        "alt": "Stress und Papiere auf Küchentisch"
       },
-      "mobile": {
-        "title": "Mobile-First",
-        "description": "Optimiert für mobile Geräte. Verwalten Sie Ihre Eigenschaften überall, jederzeit."
+      "after": {
+        "title": "Mit Gastvrij.eu: Ruhe",
+        "description": "30 Minuten, der Rest ist Zeit für Gäste",
+        "alt": "Gemütlicher Frühstückstisch mit Gastgeberin und Gästen"
       },
-      "belgian": {
-        "title": "Belgien-freundlich",
-        "description": "Unterstützung für niederländische und französische Sprachen. Lokale Zahlungsmethoden und Währungen."
+      "benefits": {
+        "title": "Das bekommen Sie zurück:",
+        "time": "<strong>2,5 Stunden pro Tag</strong> - Für diese netten Gespräche mit Gästen",
+        "weekend": "<strong>Wochenendruhe</strong> - Automatische Buchungsbestätigungen",
+        "tax": "<strong>Kein Umsatzsteuerstress</strong> - Berichte mit 1 Klick fertig",
+        "history": "<strong>Persönliche Gästehistorie</strong> - \"Willkommen zurück Frau Müller!\"",
+        "savings": "<strong>150€ Ersparnis pro Monat</strong> - Versus große Hotelsoftware",
+        "mobile": "<strong>Mobil überall dabei</strong> - Check-in aus dem Garten bestätigen"
       },
-      "performance": {
-        "title": "Schnelle Performance",
-        "description": "Next.js 14 mit Server Components für optimale Geschwindigkeit und Benutzererfahrung."
-      },
-      "payments": {
-        "title": "Lokale Zahlungen",
-        "description": "Unterstützung für Bancontact, iDEAL und andere belgische Zahlungsmethoden."
-      },
-      "analytics": {
-        "title": "Analytics & Insights",
-        "description": "DSGVO-konforme Analytics zur Optimierung Ihres Hospitality-Geschäfts."
+      "testimonial": {
+        "quote": "Seit Gastvrij.eu kann ich wieder das machen, wofür ich in diesen Sektor eingestiegen bin: <strong>Gastgeberin sein</strong> statt Verwaltungsangestellte.",
+        "author": "- Marie, B&B De Lindenhof, Brügge"
+      }
+    },
+    "target": {
+      "title": "Speziell für Sie gemacht",
+      "description": "<strong>Gastvrij.eu</strong> ist für familiäre Unterkunftsbetreiber in Flandern (1-8 Zimmer) entwickelt, für die <strong>Gastfreundschaft die Kernmotivation</strong> ist. Sie sehen Unterkunft nicht nur als Geschäft, sondern als Weg, Menschen ein Zuhause-Gefühl zu geben und unvergessliche Momente zu schaffen.",
+      "traits": {
+        "personal": {
+          "title": "Persönliche Betreuung",
+          "description": "Täglich anwesend, führt Kernaktivitäten persönlich aus, jeder Gast wird persönlich empfangen und verabschiedet."
+        },
+        "local": {
+          "title": "Lokaler Botschafter",
+          "description": "Stolz auf regionale Kenntnisse, teilt Restauranttipps und Geschichten über die Region mit Leidenschaft und Expertise."
+        },
+        "quality": {
+          "title": "Qualität vor Quantität",
+          "description": "Wählt bewusst kleine Maßstäbe, um persönliche Aufmerksamkeit und authentische Gästeerfahrung zu garantieren."
+        },
+        "outsourcing": {
+          "title": "Intelligente Auslagerung",
+          "description": "Lagert strategisch Aufgaben aus (Wäscherei, Garten, Reinigung), um mehr Zeit für Gästekontakt freizumachen."
+        }
       }
     },
     "cta": {
-      "title": "Bereit anzufangen?",
-      "subtitle": "Schließen Sie sich der wachsenden Gemeinschaft belgischer Hospitality-Profis an",
-      "register": "Kostenloses Konto Erstellen",
-      "contact": "Kontakt Aufnehmen"
+      "title": "Holen Sie sich Ihre Leidenschaft für Gastfreundschaft zurück",
+      "description": "<strong>Testen Sie es 14 Tage kostenlos.</strong> Keine Einrichtungskosten, keine Verpflichtungen. Einfach die Software ausprobieren, die Ihnen 2,5 Stunden pro Tag für Ihre Gäste zurückgibt.",
+      "benefits": {
+        "trial": "14 Tage kostenlos",
+        "setup": "Keine Einrichtungskosten",
+        "cancel": "Jederzeit kündbar"
+      },
+      "button": "Starten Sie Ihre kostenlose Testphase",
+      "alt": "Traditionelles flämisches Haus mit gastfreundlichen Betreibern"
     }
   },
   "nav": {

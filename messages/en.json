@@ -11,46 +11,88 @@
   },
   "homepage": {
     "hero": {
-      "title": "Welcome to <span>Gastvrij.eu</span>",
-      "subtitle": "The premium platform for Belgian hospitality management with full GDPR compliance",
-      "cta": {
-        "properties": "Discover Properties",
-        "host": "Become Host"
+      "title": "Gastvrij.eu",
+      "subtitle": "Finally time for my guests again",
+      "tagline": "\"Finally time for my guests again\"",
+      "description": "Do you recognize this? You started your B&B or vacation rental full of passion, but now you're drowning in administration, bookings and regulations. <strong>We understand that feeling.</strong> That's why we created software that gives you back that time with your guests.",
+      "cta": "Register and get started"
+    },
+    "problems": {
+      "title": "Do you recognize this?",
+      "administrative": {
+        "title": "\"I'm drowning in administration\"",
+        "description": "Daily 2-3 hours lost on invoices, VAT returns, booking confirmations, and tourist tax. You wanted to provide hospitality, not be an accountant.",
+        "alt": "Home workspace with stack of papers and coffee cup"
+      },
+      "time": {
+        "title": "\"No time for my guests anymore\"",
+        "description": "Those nice chats about local tips? Forget about it. Between cleaning, checking in and updating Excel you barely have time for a friendly greeting.",
+        "alt": "Hostess welcoming guests in homey entrance"
+      },
+      "software": {
+        "title": "\"Software for hotels, not for me\"",
+        "description": "€200+ per month for software full of features you don't need. Made for Hilton, not for your cozy B&B with 3 rooms.",
+        "alt": "Frustrated behind laptop with too many open windows"
       }
     },
-    "features": {
-      "title": "Why Gastvrij.eu?",
-      "subtitle": "Specially designed for the Belgian market with attention to privacy and compliance",
-      "gdpr": {
-        "title": "GDPR Compliant",
-        "description": "Full compliance with Belgian and European privacy legislation. Your guest data is secure."
+    "solution": {
+      "title": "What if this becomes your daily reality?",
+      "before": {
+        "title": "Before: Chaos",
+        "description": "3 hours administration per day",
+        "alt": "Stress and papers on kitchen table"
       },
-      "mobile": {
-        "title": "Mobile-First",
-        "description": "Optimized for mobile devices. Manage your properties anywhere, anytime."
+      "after": {
+        "title": "With Gastvrij.eu: Peace",
+        "description": "30 minutes, rest is time for guests",
+        "alt": "Cozy breakfast table with hostess and guests"
       },
-      "belgian": {
-        "title": "Belgian Friendly",
-        "description": "Support for Dutch and French languages. Local payment methods and currencies."
+      "benefits": {
+        "title": "This is what you get back:",
+        "time": "2.5 hours per day - For those nice conversations with guests",
+        "weekend": "Weekend rest - Automatic booking confirmations",
+        "tax": "No VAT stress - Reports ready with 1 click",
+        "history": "Personal guest history - \"Welcome back Mrs. Johnson!\"",
+        "savings": "€150 savings per month - Versus big hotel software",
+        "mobile": "Mobile everywhere - Confirm check-in from the garden"
       },
-      "performance": {
-        "title": "Fast Performance",
-        "description": "Next.js 14 with Server Components for optimal speed and user experience."
-      },
-      "payments": {
-        "title": "Local Payments",
-        "description": "Support for Bancontact, iDEAL and other Belgian payment methods."
-      },
-      "analytics": {
-        "title": "Analytics & Insights",
-        "description": "GDPR-compliant analytics to optimize your hospitality business."
+      "testimonial": {
+        "quote": "Since Gastvrij.eu I can do again what I entered this sector for: being a hostess instead of an administrative assistant.",
+        "author": "- Marie, B&B De Lindenhof, Bruges"
+      }
+    },
+    "target": {
+      "title": "Specially made for you",
+      "description": "Gastvrij.eu is designed for family accommodation operators in Flanders (1-8 rooms) for whom hospitality is the core motivation. You see accommodation not just as business, but as a way to give people a feeling of home and create unforgettable moments.",
+      "traits": {
+        "personal": {
+          "title": "Personal Involvement",
+          "description": "Present daily, personally performs core activities, every guest is personally welcomed and seen off."
+        },
+        "local": {
+          "title": "Local Ambassador",
+          "description": "Proud of regional knowledge, shares restaurant tips and stories about the region with passion and expertise."
+        },
+        "quality": {
+          "title": "Quality over Quantity",
+          "description": "Consciously chooses small scale to guarantee personal attention and authentic guest experience."
+        },
+        "outsourcing": {
+          "title": "Smart Outsourcing",
+          "description": "Strategically outsources tasks (laundry, garden, cleaning) to free up more time for guest contact."
+        }
       }
     },
     "cta": {
-      "title": "Ready to get started?",
-      "subtitle": "Join the growing community of Belgian hospitality professionals",
-      "register": "Create Free Account",
-      "contact": "Get in Touch"
+      "title": "Get your passion for hospitality back",
+      "description": "Try it free for 14 days. No setup costs, no obligations. Just try the software that gives you back 2.5 hours per day for your guests.",
+      "benefits": {
+        "trial": "14 days free",
+        "setup": "No setup costs",
+        "cancel": "Cancel anytime"
+      },
+      "button": "Start your free trial",
+      "alt": "Traditional Flemish house with hospitable operators"
     }
   },
   "nav": {

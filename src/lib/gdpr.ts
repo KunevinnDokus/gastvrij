@@ -213,7 +213,7 @@ export async function createConsentHistory(
         action,
         ipAddress,
         userAgent,
-        timestamp: consent.timestamp,
+        timestamp: consent.timestamp || new Date(),
         expiresAt: consent.expiresAt || expiresAt,
       },
     });

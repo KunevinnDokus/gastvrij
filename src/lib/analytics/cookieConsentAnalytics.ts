@@ -144,7 +144,10 @@ class CookieConsentAnalytics {
     const activeVariants = DEFAULT_AB_VARIANTS.filter(v => v.isActive);
     const totalTraffic = activeVariants.reduce((sum, v) => sum + v.trafficPercent, 0);
     
-    if (totalTraffic === 0) return activeVariants[0];
+    if (totalTraffic === 0 || activeVariants.length === 0) {
+      // Fallback to first available variant - DEFAULT_AB_VARIANTS is guaranteed to have at least one item
+      return DEFAULT_AB_VARIANTS[0]!;
+    }
     
     const random = Math.random() * totalTraffic;
     let cumulative = 0;
@@ -157,7 +160,7 @@ class CookieConsentAnalytics {
       }
     }
     
-    return activeVariants[0];
+    return activeVariants[0]!;
   }
   
   // Get current A/B test variant
@@ -330,7 +333,7 @@ class CookieConsentAnalytics {
     variant: ABTestVariant;
     events: ConsentAnalyticsEvent[];
     funnelData: ConsentFunnelData[];
-    insights: ReturnType<typeof this.getUXInsights>;
+    insights: any;
     summary: {
       totalEvents: number;
       sessionDuration: number;

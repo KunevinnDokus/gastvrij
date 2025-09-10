@@ -63,6 +63,14 @@ module.exports = {
           800: '#075985',
           900: '#0c4a6e',
         },
+        // Landing page specific colors
+        'primary-color': '#8B4513',
+        'secondary-color': '#D4AF37', 
+        'accent-color': '#2F4F4F',
+        'warm-white': '#FEFBF7',
+        'soft-gray': '#F5F5F0',
+        'text-dark': '#2C2C2C',
+        'text-light': '#4A4A4A',
       },
       borderRadius: {
         lg: "var(--radius)",

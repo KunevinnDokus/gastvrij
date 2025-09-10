@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gastvrij.eu - Authentieke gastvrijheid mogelijk maken</title>
+    <style>
+        :root {
+            --primary-color: #8B4513;
+            --secondary-color: #D4AF37;
+            --accent-color: #2F4F4F;
+            --warm-white: #FEFBF7;
+            --soft-gray: #F5F5F0;
+            --text-dark: #2C2C2C;
+            --text-light: #4A4A4A; /* Improved contrast for accessibility */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--warm-white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--warm-white) 0%, var(--soft-gray) 100%), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" opacity="0.1"><rect x="100" y="200" width="200" height="150" rx="10" fill="%23D4AF37" opacity="0.3"/><circle cx="900" cy="150" r="80" fill="%238B4513" opacity="0.2"/><path d="M300 400 Q400 350 500 400 T700 400" stroke="%232F4F4F" stroke-width="3" fill="none" opacity="0.4"/></svg>');
+            padding: 80px 0 120px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Video/Image background for hero */
+        .hero-visual {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=80') center/cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .tagline {
+            font-size: 1.4rem;
+            color: var(--accent-color);
+            margin-bottom: 40px;
+            font-style: italic;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 20px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.3);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(139, 69, 19, 0.4);
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section:nth-child(even) {
+            background-color: var(--soft-gray);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--secondary-color);
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+
+        /* Problem Section */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .problem-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .problem-visual {
+            margin-bottom: 20px;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 200px;
+        }
+        
+        .problem-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .problem-card:hover .problem-image {
+            transform: scale(1.05);
+        }
+
+        .problem-title {
+            font-size: 1.4rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .problem-description {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* Solution Section */
+        .solution-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+        
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            text-align: center;
+        }
+        
+        .before, .after {
+            padding: 20px;
+            border-radius: 15px;
+        }
+        
+        .before {
+            background: #ffebee;
+            border-left: 4px solid #e57373;
+        }
+        
+        .after {
+            background: #e8f5e8;
+            border-left: 4px solid #66bb6a;
+        }
+        
+        .comparison-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .benefit-title {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial {
+            background: var(--soft-gray);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 30px;
+            border-left: 4px solid var(--secondary-color);
+        }
+        
+        .quote {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+        
+        .author {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .solution-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        .solution-highlight {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .solution-features {
+            list-style: none;
+            margin-top: 30px;
+        }
+
+        .solution-features li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: var(--text-dark);
+        }
+
+        .solution-features li::before {
+            content: '✨';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            font-size: 1.2rem;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* ICP Section */
+        .icp-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .icp-description {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin-bottom: 40px;
+        }
+
+        .icp-traits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .trait-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--secondary-color);
+        }
+
+        .trait-title {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .trait-description {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            position: relative;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        .cta-video {
+            position: relative;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .cta-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+        
+        .cta-overlay {
+            position: relative;
+            z-index: 3;
+            background: rgba(47, 79, 79, 0.9);
+            color: white;
+            padding: 60px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 40px;
+        }
+        
+        .cta-benefits {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .benefit-tag {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .cta-section .section-title {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 30px;
+        }
+
+        .cta-description {
+            font-size: 1.3rem;
+            margin-bottom: 50px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button-large {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: var(--text-dark);
+            padding: 25px 60px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.4rem;
+            font-weight: bold;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button-large:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            background: #E6C547;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .tagline {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .solution-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .problem-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .icp-traits {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-section .section-title {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="hero-visual"></div>
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">Gastvrij.eu</h1>
+                <p class="tagline">"Eindelijk weer tijd voor mijn gasten"</p>
+                <p class="hero-description">
+                    Herken je dit? Je startte vol passie je B&B of vakantiewoning, maar nu verdrinkt je in administratie, boekingen en regelgeving. <strong>Wij snappen dat gevoel.</strong> Daarom maakten we software die jou die tijd met je gasten teruggeeft.
+                </p>
+                <a href="#registreer" class="cta-button">Registreer en ga aan de slag</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Herken je dit?</h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-visual">
+                        <img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?auto=format&fit=crop&w=400&q=80" alt="Huiselijke werkplek met papieren stapel en koffiekop" class="problem-image">
+                    </div>
+                    <h3 class="problem-title">"Ik verdrink in de administratie"</h3>
+                    <p class="problem-description">
+                        <strong>Dagelijks 2-3 uur kwijt</strong> aan facturen, BTW-aangiftes, 
+                        boekingsbevestigingen, en toeristentaks. Je wilde gastvrijheid bieden, 
+                        geen boekhouder zijn.
+                    </p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-visual">
+                        <img src="https://images.unsplash.com/photo-1577563908411-5077b6dc7624?auto=format&fit=crop&w=400&q=80" alt="Gastvrouw ontvangt gasten in huiselijke entree" class="problem-image">
+                    </div>
+                    <h3 class="problem-title">"Geen tijd meer voor mijn gasten"</h3>
+                    <p class="problem-description">
+                        Die <strong>leuke gesprekjes over lokale tips</strong>? Vergeet het maar. 
+                        Tussen het schoonmaken, inchecken en Excel bijwerken heb je amper tijd 
+                        voor een vriendelijke groet.
+                    </p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-visual">
+                        <img src="https://images.unsplash.com/photo-1616587894289-86480e533129?auto=format&fit=crop&w=400&q=80" alt="Gefrustreerd achter laptop met te veel open vensters" class="problem-image">
+                    </div>
+                    <h3 class="problem-title">"Software voor hotels, niet voor mij"</h3>
+                    <p class="problem-description">
+                        <strong>€200+ per maand</strong> voor software vol functies die je niet nodig hebt. 
+                        Gemaakt voor Hilton, niet voor jouw knusse B&B met 3 kamers.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Wat als dit jouw dagelijkse realiteit wordt?</h2>
+            <div class="solution-content">
+                <div class="solution-visual">
+                    <div class="before-after">
+                        <div class="before">
+                            <h4>Voorheen: Chaos</h4>
+                            <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=500&q=80" alt="Stress en papieren op keukentafel" class="comparison-image">
+                            <p>3 uur administratie per dag</p>
+                        </div>
+                        <div class="after">
+                            <h4>Met Gastvrij.eu: Rust</h4>
+                            <img src="https://images.unsplash.com/photo-1600298881974-6be191ceeda1?auto=format&fit=crop&w=500&q=80" alt="Gezellige ontbijttafel met gastvrouw en gasten" class="comparison-image">
+                            <p>30 minuten, rest is tijd voor gasten</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="solution-text">
+                    <h3 class="benefit-title">Dit krijg je terug:</h3>
+                    <ul class="solution-features">
+                        <li><strong>2,5 uur per dag</strong> - Voor die leuke gesprekjes met gasten</li>
+                        <li><strong>Weekend rust</strong> - Automatische boekingsbevestigingen</li>
+                        <li><strong>Geen stress over BTW</strong> - Rapportages klaar met 1 klik</li>
+                        <li><strong>Persoonlijke gastengeschiedenis</strong> - "Welkom terug mevrouw Janssen!"</li>
+                        <li><strong>€150 besparing per maand</strong> - Versus grote hotelsoftware</li>
+                        <li><strong>Mobiel overal bij</strong> - Check-in bevestigen vanuit de tuin</li>
+                    </ul>
+                    <div class="testimonial">
+                        <p class="quote">"Sinds Gastvrij.eu kan ik weer doen waar ik voor in deze sector stapte: <strong>gastvrouw zijn</strong> in plaats van administratief medewerkster."</p>
+                        <p class="author">- Marie, B&B De Lindenhof, Brugge</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Speciaal voor Jullie Gemaakt</h2>
+            <div class="icp-content">
+                <p class="icp-description">
+                    <strong>Gastvrij.eu</strong> is ontworpen voor familiale logiesuitbaters in Vlaanderen 
+                    (1-8 kamers) voor wie <strong>gastvrijheid de kernmotivatie</strong> is. Jullie zien 
+                    logies niet alleen als business, maar als een manier om mensen een thuisgevoel te 
+                    geven en onvergetelijke momenten te creëren.
+                </p>
+                
+                <div class="icp-traits">
+                    <div class="trait-card">
+                        <h4 class="trait-title">Persoonlijke Betrokkenheid</h4>
+                        <p class="trait-description">
+                            Dagelijks aanwezig, voert kernactiviteiten persoonlijk uit, 
+                            elke gast wordt persoonlijk onthaald en uitgezwaaid.
+                        </p>
+                    </div>
+                    <div class="trait-card">
+                        <h4 class="trait-title">Lokale Ambassadeur</h4>
+                        <p class="trait-description">
+                            Trots op streekkennis, deelt restauranttips en verhalen 
+                            over de regio met passie en expertise.
+                        </p>
+                    </div>
+                    <div class="trait-card">
+                        <h4 class="trait-title">Kwaliteit boven Kwantiteit</h4>
+                        <p class="trait-description">
+                            Kiest bewust voor kleinschaligheid om persoonlijke 
+                            aandacht en authentieke gastbeleving te kunnen garanderen.
+                        </p>
+                    </div>
+                    <div class="trait-card">
+                        <h4 class="trait-title">Slimme Uitbesteding</h4>
+                        <p class="trait-description">
+                            Besteedt strategisch taken uit (was, tuin, schoonmaak) 
+                            om meer tijd vrij te maken voor gastcontact.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="registreer">
+        <div class="container">
+            <div class="cta-video">
+                <img src="https://images.unsplash.com/photo-1600298882974-997831947387?auto=format&fit=crop&w=800&q=80" alt="Traditioneel Vlaams huis met gastvrije uitbaters" class="cta-background">
+                <div class="cta-overlay">
+                    <h2 class="section-title">Krijg je passie voor gastvrijheid terug</h2>
+                    <p class="cta-description">
+                        <strong>Probeer het 14 dagen gratis.</strong> Geen setup kosten, geen verplichtingen. 
+                        Gewoon de software proberen die je 2,5 uur per dag teruggeeft voor je gasten.
+                    </p>
+                    <div class="cta-benefits">
+                        <span class="benefit-tag">✓ 14 dagen gratis</span>
+                        <span class="benefit-tag">✓ Geen setup kosten</span>
+                        <span class="benefit-tag">✓ Annuleer wanneer je wilt</span>
+                    </div>
+                    <a href="mailto:info@gastvrij.eu?subject=14%20dagen%20gratis%20proberen&body=Hallo,%0A%0AIk%20wil%20Gastvrij.eu%2014%20dagen%20gratis%20proberen.%0A%0ANaam%20logies:%0AAantal%20kamers:%0ALocatie:%0AContactpersoon:%0ATelefoon:%0A%0AMet%20vriendelijke%20groet" class="cta-button-large">
+                        Start je gratis proefperiode
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Gastvrij.eu - Authentieke gastvrijheidservaringen mogelijk maken</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -11,46 +11,88 @@
   },
   "homepage": {
     "hero": {
-      "title": "Welkom bij <span>Gastvrij.eu</span>",
-      "subtitle": "Het premium platform voor Belgische hospitality management met volledige GDPR-compliance",
-      "cta": {
-        "properties": "Ontdek Eigenschappen",
-        "host": "Word Host"
+      "title": "Gastvrij.eu",
+      "subtitle": "Eindelijk weer tijd voor mijn gasten",
+      "tagline": "\"Eindelijk weer tijd voor mijn gasten\"",
+      "description": "Herken je dit? Je startte vol passie je B&B of vakantiewoning, maar nu verdrinkt je in administratie, boekingen en regelgeving. Wij snappen dat gevoel. Daarom maakten we software die jou die tijd met je gasten teruggeeft.",
+      "cta": "Registreer en ga aan de slag"
+    },
+    "problems": {
+      "title": "Herken je dit?",
+      "administrative": {
+        "title": "\"Ik verdrink in de administratie\"",
+        "description": "Dagelijks 2-3 uur kwijt aan facturen, BTW-aangiftes, boekingsbevestigingen, en toeristentaks. Je wilde gastvrijheid bieden, geen boekhouder zijn.",
+        "alt": "Huiselijke werkplek met papieren stapel en koffiekop"
+      },
+      "time": {
+        "title": "\"Geen tijd meer voor mijn gasten\"",
+        "description": "Die leuke gesprekjes over lokale tips? Vergeet het maar. Tussen het schoonmaken, inchecken en Excel bijwerken heb je amper tijd voor een vriendelijke groet.",
+        "alt": "Gastvrouw ontvangt gasten in huiselijke entree"
+      },
+      "software": {
+        "title": "\"Software voor hotels, niet voor mij\"",
+        "description": "€200+ per maand voor software vol functies die je niet nodig hebt. Gemaakt voor Hilton, niet voor jouw knusse B&B met 3 kamers.",
+        "alt": "Gefrustreerd achter laptop met te veel open vensters"
       }
     },
-    "features": {
-      "title": "Waarom Gastvrij.eu?",
-      "subtitle": "Speciaal ontworpen voor de Belgische markt met aandacht voor privacy en compliance",
-      "gdpr": {
-        "title": "GDPR Compliant",
-        "description": "Volledige naleving van Belgische en Europese privacywetgeving. Uw gastgegevens zijn veilig."
+    "solution": {
+      "title": "Wat als dit jouw dagelijkse realiteit wordt?",
+      "before": {
+        "title": "Voorheen: Chaos",
+        "description": "3 uur administratie per dag",
+        "alt": "Stress en papieren op keukentafel"
       },
-      "mobile": {
-        "title": "Mobile-First",
-        "description": "Geoptimaliseerd voor mobiele apparaten. Beheer uw eigenschappen overal, altijd."
+      "after": {
+        "title": "Met Gastvrij.eu: Rust",
+        "description": "30 minuten, rest is tijd voor gasten",
+        "alt": "Gezellige ontbijttafel met gastvrouw en gasten"
       },
-      "belgian": {
-        "title": "Belgisch Vriendelijk",
-        "description": "Ondersteuning voor Nederlandse en Franse talen. Lokale betalingsmethoden en valuta."
+      "benefits": {
+        "title": "Dit krijg je terug:",
+        "time": "2,5 uur per dag - Voor die leuke gesprekjes met gasten",
+        "weekend": "Weekend rust - Automatische boekingsbevestigingen",
+        "tax": "Geen stress over BTW - Rapportages klaar met 1 klik",
+        "history": "Persoonlijke gastengeschiedenis - \"Welkom terug mevrouw Janssen!\"",
+        "savings": "€150 besparing per maand - Versus grote hotelsoftware",
+        "mobile": "Mobiel overal bij - Check-in bevestigen vanuit de tuin"
       },
-      "performance": {
-        "title": "Snelle Performance",
-        "description": "Next.js 14 met Server Components voor optimale snelheid en gebruikerservaring."
-      },
-      "payments": {
-        "title": "Lokale Betalingen",
-        "description": "Ondersteuning voor Bancontact, iDEAL en andere Belgische betalingsmethoden."
-      },
-      "analytics": {
-        "title": "Analytics & Insights",
-        "description": "GDPR-compliant analytics om uw hospitality business te optimaliseren."
+      "testimonial": {
+        "quote": "Sinds Gastvrij.eu kan ik weer doen waar ik voor in deze sector stapte: gastvrouw zijn in plaats van administratief medewerkster.",
+        "author": "- Marie, B&B De Lindenhof, Brugge"
+      }
+    },
+    "target": {
+      "title": "Speciaal voor jullie gemaakt",
+      "description": "Gastvrij.eu is ontworpen voor familiale logiesuitbaters in Vlaanderen (1-8 kamers) voor wie gastvrijheid de kernmotivatie is. Jullie zien logies niet alleen als business, maar als een manier om mensen een thuisgevoel te geven en onvergetelijke momenten te creëren.",
+      "traits": {
+        "personal": {
+          "title": "Persoonlijke Betrokkenheid",
+          "description": "Dagelijks aanwezig, voert kernactiviteiten persoonlijk uit, elke gast wordt persoonlijk onthaald en uitgezwaaid."
+        },
+        "local": {
+          "title": "Lokale Ambassadeur",
+          "description": "Trots op streekkennis, deelt restauranttips en verhalen over de regio met passie en expertise."
+        },
+        "quality": {
+          "title": "Kwaliteit boven Kwantiteit",
+          "description": "Kiest bewust voor kleinschaligheid om persoonlijke aandacht en authentieke gastbeleving te kunnen garanderen."
+        },
+        "outsourcing": {
+          "title": "Slimme Uitbesteding",
+          "description": "Besteedt strategisch taken uit (was, tuin, schoonmaak) om meer tijd vrij te maken voor gastcontact."
+        }
       }
     },
     "cta": {
-      "title": "Klaar om te beginnen?",
-      "subtitle": "Sluit u aan bij de groeiende gemeenschap van Belgische hospitality professionals",
-      "register": "Gratis Account Aanmaken",
-      "contact": "Contact Opnemen"
+      "title": "Krijg je passie voor gastvrijheid terug",
+      "description": "Probeer het 14 dagen gratis. Geen setup kosten, geen verplichtingen. Gewoon de software proberen die je 2,5 uur per dag teruggeeft voor je gasten.",
+      "benefits": {
+        "trial": "14 dagen gratis",
+        "setup": "Geen setup kosten",
+        "cancel": "Annuleer wanneer je wilt"
+      },
+      "button": "Start je gratis proefperiode",
+      "alt": "Traditioneel Vlaams huis met gastvrije uitbaters"
     }
   },
   "nav": {
